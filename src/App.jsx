@@ -1,25 +1,16 @@
-import React, { useState } from 'react'
+import { Routes,Route } from "react-router-dom"
+import CollectionPage from "./pages/CollectionPage"
+import HomePage from "./pages/HomePage"
+import Navbar from "./components/Navbar"
 const App = () => {
-  const [name, setName] = useState('')
 
-  const submitHandler = (e) =>{
-    e.preventDefault()
-    console.log('Form submitted by', name);
-    setName('')
-  }
   return (
     <div>
-      <form onSubmit={(e) => submitHandler(e)}>
-        <input 
-        type='text' 
-        placeholder='Enter your name'
-        value={name}
-        onChange={(e) => {
-          setName(e.target.value)
-        }}
-        />
-        <button>Submit</button>
-      </form>
+      <Navbar />  
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/collection" element={<CollectionPage />} />
+      </Routes>
     </div>
   )
 }
